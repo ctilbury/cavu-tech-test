@@ -8,7 +8,6 @@
       >
       <h1>Departures</h1>
     </div>
-
     <div class="content">
       <div class="column-headings">
         <span>Departure time</span>
@@ -18,21 +17,18 @@
         <span>Gate</span>
         <span>Status</span>
       </div>
-
       <div class="flight-data">
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
-        <Flight />
+        <Flight
+          v-for="flight in flights"
+          :key="flight.id"
+          :departure-time="flight.departureTime"
+          :city-name="flight.cityName"
+          :airport-code="flight.airportCode"
+          :airline="flight.airline"
+          :departure-gate="flight.departureGate"
+          :status="flight.status"
+        />
       </div>
-
     </div>
   </div>
 </template>
@@ -44,6 +40,12 @@ export default {
   name: 'FlightBoard',
   components: {
     Flight
+  },
+  props: {
+    flights: {
+      type: Object,
+      default: () => ({})
+    }
   }
 }
 </script>

@@ -1,17 +1,43 @@
 <template>
   <div class="flight">
     <span>06.55</span>
-    <span class="yellow">Toronto</span>
-    <span>YYZ</span>
-    <span>Air Canada</span>
-    <span class="yellow">A4</span>
-    <span>Flight closing</span>
+    <span class="yellow">{{ cityName }}</span>
+    <span>{{ airportCode }}</span>
+    <span>{{ airline }}</span>
+    <span class="yellow">{{ departureGate }}</span>
+    <span>{{ status }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Flight'
+  name: 'Flight',
+  props: {
+    departureTime: {
+      type: String,
+      default: ''
+    },
+    cityName: {
+      type: String,
+      default: ''
+    },
+    airportCode: {
+      type: String,
+      default: ''
+    },
+    airline: {
+      type: String,
+      default: ''
+    },
+    departureGate: {
+      type: String,
+      default: ''
+    },
+    status: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 

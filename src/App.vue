@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <FlightBoard />
+    <FlightBoard
+      :flights="departures"
+    />
   </div>
 </template>
 
