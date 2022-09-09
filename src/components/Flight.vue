@@ -1,6 +1,6 @@
 <template>
   <div class="flight">
-    <span>06.55</span>
+    <span>{{ departureTime }}</span>
     <span class="yellow">{{ cityName }}</span>
     <span>{{ airportCode }}</span>
     <span>{{ airline }}</span>

@@ -29,7 +29,7 @@ export default {
         formattedFlight.id = uuidv4()
 
         flight.scheduledDepartureDateTime ?
-          formattedFlight.departureTime = flight.scheduledDepartureDateTime :
+          formattedFlight.departureTime = this.handleDate(flight.scheduledDepartureDateTime) :
           formattedFlight.departureTime = ''
 
         flight.arrivalAirport && flight.arrivalAirport.cityName ?
@@ -55,6 +55,19 @@ export default {
         return formattedFlight
       })
       this.departures = formattedFlightData
+    },
+    handleDate(dateString) {
+      const timestamp = Date.parse(dateString)
+      if (timestamp) {
+        const date = new Date(timestamp)
+        // make sure we have a leading 0 if the hours or minutes are one digit
+        const hours = `0${date.getHours()}`.slice(-2);
+        const minutes = `0${date.getMinutes()}`.slice(-2);
+        
+        return `${hours}.${minutes}`
+      } else {
+        return ''
+      }
     },
     async getFlightData() {
       try {
