@@ -43,8 +43,8 @@ export default {
   },
   props: {
     flights: {
-      type: Object,
-      default: () => ({})
+      type: Array,
+      default: []
     }
   }
 }
