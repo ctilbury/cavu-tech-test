@@ -55,6 +55,7 @@ export default {
 
 .flight-board {
   width: 90%;
+  margin: 2rem 0;
   background: linear-gradient(90deg, #464646 0%, #000000 100%);
 }
 

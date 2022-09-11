@@ -3,6 +3,10 @@
     <FlightBoard
       :flights="departures"
     />
+    <Form
+      :flights="departures"
+      @updateFlightStatus="updateFlightStatus"
+    />
   </div>
 </template>
 
@@ -10,11 +14,13 @@
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import FlightBoard from './components/FlightBoard.vue'
+import Form from './components/Form.vue'
 
 export default {
   name: 'App',
   components: {
-    FlightBoard
+    FlightBoard,
+    Form
   },
   data() {
     return {
@@ -63,7 +69,7 @@ export default {
         // make sure we have a leading 0 if the hours or minutes are one digit
         const hours = `0${date.getHours()}`.slice(-2);
         const minutes = `0${date.getMinutes()}`.slice(-2);
-        
+
         return `${hours}.${minutes}`
       } else {
         return ''
@@ -76,6 +82,11 @@ export default {
       } catch(error) {
         console.log(`error: ${error}`)
       }
+    },
+    updateFlightStatus(updatedFlight) {
+      // find flight matching the id and update status of that flight
+      let flight = this.departures.find(f => f.id === updatedFlight.id)
+      flight.status = updatedFlight.status
     }
   },
   async mounted() {
@@ -88,7 +99,8 @@ export default {
 #app {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 </style>
