@@ -83,6 +83,7 @@ export default {
   padding: 1.5rem 1rem 1.5rem 4rem;
   font-size: 24px;
   font-weight: bold;
+  line-height: normal;
 
   span {
     color: white;

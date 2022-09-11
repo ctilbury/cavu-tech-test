@@ -1,94 +1,103 @@
 <template>
   <form v-on:submit.prevent="submitForm">
-    <h2>Edit the status of a flight</h2>
-    <div class="field">
-      <label class="label">Flight</label>
-      <div class="control">
-        <div class="select">
-          <select
-            v-model="selectedFlightId"
-          >
-            <option disabled value="">Select a flight</option>
-            <option
-              v-for="flight in flights"
-              v-bind:value="flight.id"
-              :key="flight.id"
-            >
-              {{ flight.departureTime }} - {{ flight.cityName }} / {{ flight.airportCode }} - {{ flight.airline  }}
-            </option>
-          </select>
+    <div class="panel">
+      <p class="panel-heading">Update the status of a flight</p>
+      <div class="panel-block">
+        <div class="field">
+          <label class="label">Flight</label>
+          <div class="control">
+            <div class="select">
+              <select
+                v-model="selectedFlightId"
+              >
+                <option disabled value="">Select a flight</option>
+                <option
+                  v-for="flight in flights"
+                  v-bind:value="flight.id"
+                  :key="flight.id"
+                >
+                  {{ flight.departureTime }} - {{ flight.cityName }} / {{ flight.airportCode }} - {{ flight.airline  }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div
-      v-if="selectedFlightId !== ''"
-      class="field"
-    >
-      <label class="label">New Status</label>
-      <div class="control">
-        <label class="radio">
-          <input
-            type="radio"
-            v-model="newStatus"
-            value="Departed"
-          />
-          Departed
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            v-model="newStatus"
-            value="Diverted"
-          />
-          Diverted
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            v-model="newStatus"
-            value="Delayed"
-          />
-          Delayed
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            v-model="newStatus"
-            value="Cancelled"
-          />
-          Cancelled
-        </label>
-        <label class="radio">
-          <input
-            type="radio"
-            v-model="newStatus"
-            value="Other"
-          />
-          Other (please specify)
-        </label>
-      </div>
-    </div>
-    <div
-      v-if="newStatus === 'Other'"
-      class="field"
-    >
-      <label class="label">Enter flight status</label>
-      <div class="control">
-        <input
-          type="text"
-          v-model="customStatusText"
-          placeholder="Enter flight status"
-          class="input"
-        />
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <button
-          v-bind:disabled="!isFormValid"
+        <div
+          class="field"
         >
-          Submit
-        </button>
+          <label class="label">New Status</label>
+          <div class="control">
+            <label class="radio">
+              <input
+                type="radio"
+                v-model="newStatus"
+                value="Departed"
+                v-bind:disabled="selectedFlightId === ''"
+              />
+              Departed
+            </label>
+            <label class="radio">
+              <input
+                type="radio"
+                v-model="newStatus"
+                value="Diverted"
+                v-bind:disabled="selectedFlightId === ''"
+              />
+              Diverted
+            </label>
+            <label class="radio">
+              <input
+                type="radio"
+                v-model="newStatus"
+                value="Delayed"
+                v-bind:disabled="selectedFlightId === ''"
+              />
+              Delayed
+            </label>
+            <label class="radio">
+              <input
+                type="radio"
+                v-model="newStatus"
+                value="Cancelled"
+                v-bind:disabled="selectedFlightId === ''"
+              />
+              Cancelled
+            </label>
+            <label class="radio">
+              <input
+                type="radio"
+                v-model="newStatus"
+                value="Other"
+                v-bind:disabled="selectedFlightId === ''"
+              />
+              Other (please specify)
+            </label>
+          </div>
+        </div>
+        <div
+          v-if="newStatus === 'Other'"
+          class="field"
+        >
+          <label class="label">Enter flight status</label>
+          <div class="control">
+            <input
+              type="text"
+              v-model="customStatusText"
+              placeholder="Enter flight status"
+              class="input"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button
+              v-bind:disabled="!isFormValid"
+              class="button is-success"
+            >
+              Update
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </form>
@@ -141,6 +150,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.panel {
+  margin-bottom: 1rem;
+}
 
+.panel-block {
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.radio {
+  display: block;
+}
+
+.radio + .radio {
+  margin: 0;
+}
 </style>

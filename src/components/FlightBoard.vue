@@ -55,7 +55,7 @@ export default {
 
 .flight-board {
   width: 90%;
-  margin: 2rem 0;
+  margin: 1rem 0;
   background: linear-gradient(90deg, #464646 0%, #000000 100%);
 }
 
@@ -84,6 +84,7 @@ export default {
   span {
     font-size: 18px;
     font-weight: bold;
+    line-height: normal;
   }
 }
 
