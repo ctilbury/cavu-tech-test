@@ -13,7 +13,7 @@
       {{ airline }}
     </span>
     <span class="yellow-text">
-      {{ departureGate }}
+      <span class="yellow-text gate">Gate</span> {{ departureGate }}
     </span>
     <span
       class="status-label"
@@ -72,16 +72,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/styles/mixins.scss';
 @import '../assets/styles/variables.scss';
 
 .flight {
-  @include column-layout;
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  grid-gap: 0.25rem;
+  align-items: center;
   border: 2px solid white;
   border-radius: 10px;
   margin-bottom: 1rem;
-  padding: 1.5rem 1rem 1.5rem 4rem;
-  font-size: 24px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   line-height: normal;
 
@@ -98,7 +102,7 @@ export default {
       box-shadow: inset 12px 0px 0px $yellow;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
-      padding: 0.5rem 1rem 0.5rem 2rem;
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
 
       &.orange {
         color: $orange;
@@ -116,4 +120,39 @@ export default {
     }
   }
 }
+
+@media screen and (min-width: 600px) {
+  .flight {
+    grid-template-columns: 16% 18% 12% 22% 10% 22%;
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    grid-gap: 0;
+    font-size: 1rem;
+  }
+
+  .gate {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .flight {
+    grid-template-columns: 18% 18% 12% 22% 10% 20%;
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    font-size: 1.25rem;
+
+    span.status-label {
+      padding-left: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .flight {
+    grid-template-columns: 20% 20% 12% 18% 10% 20%;
+    padding: 0.75rem 1rem 0.75rem 4rem;
+    font-size: 1.5rem;
+  }
+}
+
 </style>

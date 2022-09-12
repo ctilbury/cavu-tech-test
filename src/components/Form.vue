@@ -1,11 +1,11 @@
 <template>
-  <form
+  <div
     v-if="flights.length > 0"
-    v-on:submit.prevent="submitForm"
+    class="panel"
   >
-    <div class="panel">
-      <p class="panel-heading">Update the status of a flight</p>
-      <div class="panel-block">
+    <p class="panel-heading">Update the status of a flight</p>
+    <div class="panel-block">
+      <form v-on:submit.prevent="submitForm">
         <div class="field">
           <label class="label">Flight</label>
           <div class="control">
@@ -19,7 +19,7 @@
                   v-bind:value="flight.id"
                   :key="flight.id"
                 >
-                  {{ flight.departureTime }} - {{ flight.cityName }} / {{ flight.airportCode }} - {{ flight.airline  }}
+                  {{ flight.departureTime }} - {{ flight.cityName }}
                 </option>
               </select>
             </div>
@@ -101,9 +101,9 @@
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -160,6 +160,14 @@ export default {
 .panel-block {
   flex-direction: column;
   align-items: flex-start;
+}
+
+form {
+  width: 100%;
+}
+
+.select, .select select {
+  width: 100%;
 }
 
 .radio {

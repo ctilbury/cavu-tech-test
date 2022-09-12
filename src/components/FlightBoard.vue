@@ -74,7 +74,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../assets/styles/mixins.scss';
 
 .flight-board {
   width: 90%;
@@ -86,11 +85,19 @@ export default {
   background: radial-gradient(81.65% 10898.53% at 18.35% 50%, #FFEF97 0%, #DFC42E 100%);
   display: flex;
   align-items: center;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
 }
 
 .departures-icon {
   margin: 0 2rem;
+}
+
+h1 {
+  color: black;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 .content {
@@ -98,17 +105,7 @@ export default {
 }
 
 .column-headings {
-  @include column-layout;
-  background: linear-gradient(90deg, #FFFFFF 0%, #AEBCCA 100%);
-  border-radius: 10px;
-  padding: 0.75rem 1rem 0.75rem 4rem;
-  margin-bottom: 1rem;
-
-  span {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: normal;
-  }
+  display: none;
 }
 
 .flight-data {
@@ -144,4 +141,65 @@ export default {
 .error-msg {
   color: white;
 }
+
+@media screen and (min-width: 600px) {
+  .header {
+    padding: 1.2rem 0;
+  }
+
+  h1 {
+    font-size: 1.8rem
+  }
+
+  .column-headings {
+    display: grid;
+    grid-template-columns: 16% 18% 12% 22% 10% 22%;
+    align-items: center;
+    background: linear-gradient(90deg, #FFFFFF 0%, #AEBCCA 100%);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+
+    span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      line-height: normal;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 1.5rem 0;
+  }
+
+  h1 {
+    font-size: 2.2rem
+  }
+
+  .column-headings {
+    grid-template-columns: 18% 18% 12% 22% 10% 20%;
+    padding: 0.75rem 1rem 0.75rem 2rem;
+
+    span {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  h1 {
+    font-size: 2.65rem
+  }
+
+  .column-headings {
+    grid-template-columns: 20% 20% 12% 18% 10% 20%;
+    padding: 0.75rem 1rem 0.75rem 4rem;
+
+    span {
+      font-size: 1.25rem;
+    }
+  }
+}
+
 </style>
