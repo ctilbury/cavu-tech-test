@@ -1,24 +1,19 @@
-# cavu-tech-test
+# Cavu Tech Test
 
-## Project setup
-```
-npm install
-```
+Vue.js 2 app built using [Vue CLI](https://cli.vuejs.org/).
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Setup notes
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Clone the repo, then `npm install`, followed by `npm run serve` to start up a local server.
 
-### Lints and fixes files
-```
-npm run lint
-```
+## External packages
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[Sass] (https://sass-lang.com/) as a css pre-processor.
+[Normalize.css] (https://necolas.github.io/normalize.css/) to help with consistent cross-browser styling.
+[Axios] (https://www.npmjs.com/package/axios) for the API call.
+[uuid] (https://www.npmjs.com/package/uuid) to quickly generate unique IDs.
+[Bulma] (https://bulma.io/) for some ready-made syling for the form.
+
+## Other notes
+
+Given more time, I would've liked to add some unit testing using Jest, however I'm still learning about testing so didn't get a chance to add that. I haven't matched the design in a pixel-perfect way, it's pretty close and works reponsively, although with more time I could have done a bit of a better job.
