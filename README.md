@@ -8,11 +8,11 @@ Clone the repo, then `npm install`, followed by `npm run serve` to start up a lo
 
 ## External packages
 
-[Sass] (https://sass-lang.com/) as a css pre-processor.
-[Normalize.css] (https://necolas.github.io/normalize.css/) to help with consistent cross-browser styling.
-[Axios] (https://www.npmjs.com/package/axios) for the API call.
-[uuid] (https://www.npmjs.com/package/uuid) to quickly generate unique IDs.
-[Bulma] (https://bulma.io/) for some ready-made syling for the form.
+[Sass](https://sass-lang.com/) as a css pre-processor.
+[Normalize.css](https://necolas.github.io/normalize.css/) to help with consistent cross-browser styling.
+[Axios](https://www.npmjs.com/package/axios) for the API call.
+[uuid](https://www.npmjs.com/package/uuid) to quickly generate unique IDs.
+[Bulma](https://bulma.io/) for some ready-made syling for the form.
 
 ## Other notes
 
