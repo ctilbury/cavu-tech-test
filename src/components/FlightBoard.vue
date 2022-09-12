@@ -17,7 +17,10 @@
         <span>Gate</span>
         <span>Status</span>
       </div>
-      <div class="flight-data">
+      <div
+        v-if="flights.length > 0"
+        class="flight-data"
+      >
         <Flight
           v-for="flight in flights"
           :key="flight.id"
@@ -28,6 +31,22 @@
           :departure-gate="flight.departureGate"
           :status="flight.status"
         />
+      </div>
+      <div
+        v-else
+        class="no-flight-data"
+      >
+        <div
+          v-if="!apiCallFailed"
+          class="loading"
+        />
+        <div
+          v-else
+          class="error-msg"
+        >
+          Error: could not get flight data.
+        </div>
+
       </div>
     </div>
   </div>
@@ -45,6 +64,10 @@ export default {
     flights: {
       type: Array,
       default: []
+    },
+    apiCallFailed: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -91,5 +114,34 @@ export default {
 .flight-data {
   height: 400px;
   overflow: auto;
+}
+
+.no-flight-data {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-msg {
+  color: white;
 }
 </style>

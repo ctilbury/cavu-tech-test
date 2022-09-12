@@ -1,5 +1,8 @@
 <template>
-  <form v-on:submit.prevent="submitForm">
+  <form
+    v-if="flights.length > 0"
+    v-on:submit.prevent="submitForm"
+  >
     <div class="panel">
       <p class="panel-heading">Update the status of a flight</p>
       <div class="panel-block">

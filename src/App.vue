@@ -2,6 +2,7 @@
   <div id="app">
     <FlightBoard
       :flights="departures"
+      :apiCallFailed="apiCallFailed"
     />
     <Form
       :flights="departures"
@@ -24,7 +25,8 @@ export default {
   },
   data() {
     return {
-      departures: []
+      departures: [],
+      apiCallFailed: false
     }
   },
   methods: {
@@ -81,6 +83,7 @@ export default {
         this.formatFlightData(response.data.allDepartures)
       } catch(error) {
         console.log(`error: ${error}`)
+        this.apiCallFailed = true
       }
     },
     updateFlightStatus(updatedFlight) {
